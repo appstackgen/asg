@@ -9,6 +9,7 @@ set(TEST_HEADERS
 set(TEST_SOURCES
     test_kernel.cpp
     test_node_id.cpp
+    test_node_id_factory.cpp
 )
 
 set(HEADERS
