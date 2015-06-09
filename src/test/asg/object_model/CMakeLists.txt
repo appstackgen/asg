@@ -5,6 +5,7 @@ set(CMAKE_CXX_FLAGS "${PROJECT_COMPILER_FLAGS}")
 
 set(TEST_HEADERS
     project_factory.h
+    project_config.h
 )
 
 set(TEST_SOURCES

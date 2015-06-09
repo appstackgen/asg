@@ -11,10 +11,14 @@ set(CMAKE_CXX_FLAGS "${PROJECT_COMPILER_FLAGS}")
 
 set(OBJECT_MODEL_HEADERS
     model.h
+    model_fragment.h
+    data_type.h
 )
 
 set(OBJECT_MODEL_SOURCES
     model.cpp
+    model_fragment.cpp
+    data_type.cpp
 )
 
 set(HEADERS

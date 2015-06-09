@@ -7,7 +7,9 @@
 #include "project_factory.h"
 
 #include <asg/modeling/project.h>
+
 #include <asg/object_model/model.h>
+#include <asg/object_model/data_type.h>
 
 namespace asg {
 namespace object_model {
@@ -30,7 +32,18 @@ modeling::project_sptr project_factory::impl_create_project(const string &name)
 
     auto om = p->create_child<model>("an_object_model");
 
+    init_data_types(om);
+
     return p;
+}
+
+void project_factory::init_data_types(model_sptr om)
+{
+    test::data_type_names_t dtn_config;
+
+    for (auto dtn : dtn_config.default_type_names) {
+        om->create_data_type<data_type>(dtn);
+    }
 }
 
 }
