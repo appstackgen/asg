@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_BUILD_TYPE Debug)
+project(asg)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+set(CMAKE_AUTOMOC OFF)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/buildsys")
+
+enable_testing()
+
+find_package(Threads REQUIRED)
+find_package(GTest REQUIRED)
+find_package(Boost 1.54 REQUIRED) # COMPONENTS foo
+find_package(SOCI REQUIRED)
+
+set(GTEST_LIBRARIES ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+
+set(TEST_MODULE_NAME tst)
+set(TEST_PREFIX ${TEST_MODULE_NAME}_)
+
+set(DUMMY_TARGET_NAME dummy)
+set(ASG_MODULE_NAME asg)
+set(ASG_PREFIX ${ASG_MODULE_NAME}_)
+set(ASG_KERNEL_LIB_NAME ${ASG_PREFIX}kernel)
+set(ASG_TREE_LIB_NAME ${ASG_PREFIX}tree)
+
+set(PROJECT_BUILD_DIR ${CMAKE_BINARY_DIR}/build)
+set(PROJECT_DOC_DIR ${PROJECT_BUILD_DIR}/doc)
+set(PROJECT_LIB_DIR ${PROJECT_BUILD_DIR}/lib)
+set(PROJECT_BIN_DIR ${PROJECT_BUILD_DIR}/bin)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_LIB_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_LIB_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BIN_DIR})
+
+set(PROJECT_COMPILER_FLAGS "-Wall -Werror -std=c++11") # for -std=c++14 also -stdlib=libc++
+
+include_directories(${CPPUNIT_INCLUDE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/src/lib)
+include_directories(${CMAKE_SOURCE_DIR}/src/lib)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_subdirectory(src)
