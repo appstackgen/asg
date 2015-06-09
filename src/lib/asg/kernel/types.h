@@ -10,7 +10,9 @@
 #include <sstream>
 #include <vector>
 #include <cassert>
+#include <memory>
 
 namespace asg {
     using size = std::size_t;
+    using string = std::string;
 }

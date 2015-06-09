@@ -28,11 +28,18 @@ TEST(test_kernel, test_named_node) {
 TEST(test_kernel, test_node_hierarchy) {
     node root;
 
-    node child_1(&root);
-    node child_2(&root);
+    auto child_1 = root.create_child<node>();
+    auto child_2 = root.create_child<node>();
 
-    ASSERT_TRUE(child_1.has_parent());
-    ASSERT_TRUE(child_1.parent() == &root);
-    ASSERT_TRUE(child_2.parent() == child_1.parent());
+    ASSERT_TRUE(child_1->has_parent());
+    ASSERT_TRUE(child_1->parent() == &root);
+    ASSERT_TRUE(child_2->parent() == child_1->parent());
     ASSERT_EQ(2, root.child_count());
+
+    root.delete_child(child_2);
+
+    ASSERT_EQ(1, root.child_count());
+    ASSERT_EQ(1, root.children<node>().size());
+
+    ASSERT_EQ(&root, child_1->parent_as<node>());
 }
