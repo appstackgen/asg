@@ -11,10 +11,13 @@ set(CMAKE_CXX_FLAGS "${PROJECT_COMPILER_FLAGS}")
 
 set(KERNEL_HEADERS
     asg.h
+    types.h
+    node_id.h
 )
 
 set(KERNEL_SOURCES
     asg.cpp
+    node_id.cpp
 )
 
 set(HEADERS
