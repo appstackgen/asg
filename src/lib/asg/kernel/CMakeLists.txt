@@ -14,12 +14,16 @@ set(KERNEL_HEADERS
     types.h
     node_id.h
     node_id_factory.h
+    abstract_node.h
+    node.h
 )
 
 set(KERNEL_SOURCES
     asg.cpp
     node_id.cpp
     node_id_factory.cpp
+    abstract_node.cpp
+    node.cpp
 )
 
 set(HEADERS
