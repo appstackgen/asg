@@ -7,17 +7,18 @@
 #include "node.h"
 
 #include <asg/kernel/node_id_factory.h>
+#include <asg/kernel/node_name.h>
 
 namespace asg {
 
-node::node()
-    : abstract_node(), m_id(node_id_factory::create_id())
+node::node(const std::string &name)
+    : abstract_node(), m_id(node_id_factory::create_id()), m_name(node_name(name))
 {
 }
 
 void node::impl_print_on(std::ostream &strm) const
 {
-    strm << id();
+    strm << name() << " [" << id() << "]";
 }
 
 }

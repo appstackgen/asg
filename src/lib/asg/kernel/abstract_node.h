@@ -7,6 +7,7 @@
 #pragma once
 
 #include <asg/kernel/node_id.h>
+#include <asg/kernel/node_name.h>
 
 namespace asg {
 
@@ -16,8 +17,10 @@ public:
     virtual ~abstract_node();
 
     node_id id() const { return impl_id(); }
+    node_name name() const { return impl_name(); }
 
     bool has_id() const { return id().is_valid(); }
+    bool has_name() const { return name().is_valid(); }
 
     void print_on(std::ostream& strm) const { impl_print_on(strm); }
 
@@ -25,6 +28,8 @@ protected:
     abstract_node();
 
     virtual node_id impl_id() const = 0;
+    virtual node_name impl_name() const = 0;
+
     virtual void impl_print_on(std::ostream& strm) const = 0;
 };
 

@@ -13,4 +13,15 @@ node_name::node_name(const std::string &val)
 {
 }
 
+void node_name::print_on(std::ostream &strm) const
+{
+    strm << value();
+}
+
+}
+
+std::ostream &operator<<(std::ostream &strm, const asg::node_name &val)
+{
+    val.print_on(strm);
+    return strm;
 }

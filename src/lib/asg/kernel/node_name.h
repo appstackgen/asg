@@ -19,8 +19,15 @@ public:
 
     bool is_valid() const { return (!value().empty()); }
 
+    void print_on(std::ostream& strm) const;
+
+    bool operator !=(const node_name& o) const { return (o.m_val != m_val); }
+    bool operator ==(const node_name& o) const { return (o.m_val == m_val); }
+
 private:
     std::string m_val { "" };
 };
 
 }
+
+std::ostream& operator<<(std::ostream& strm, const asg::node_name& val);
