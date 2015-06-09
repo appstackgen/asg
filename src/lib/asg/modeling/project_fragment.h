@@ -19,7 +19,7 @@ class project_fragment : public asg::node
 public:
     using parent_node_t = project;
 
-    project_fragment(parent_node_t* p, const string& name="");
+    project_fragment(abstract_node* p, const string& name="");
 
     parent_node_t* project() const;
 };

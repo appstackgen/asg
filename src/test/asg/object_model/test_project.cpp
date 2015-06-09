@@ -8,6 +8,10 @@
 
 #include "project_factory.h"
 
+#include <asg/modeling/project.h>
+
+#include <asg/object_model/model.h>
+
 using namespace asg;
 using namespace asg::object_model;
 
@@ -16,4 +20,8 @@ TEST(test_object_model, test_factory) {
 
     ASSERT_TRUE(proj->has_id());
     ASSERT_TRUE(proj->has_name());
+
+    for (auto om : proj->children<model>()) {
+        ASSERT_EQ(proj.get(), om->project());
+    }
 }

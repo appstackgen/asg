@@ -30,9 +30,9 @@ public:
         return dynamic_cast<t*>(parent());
     }
 
-    template<typename child_t>
+    template<typename child_t, typename parent_t=abstract_node>
     std::shared_ptr<child_t> create_child(const string& name="") {
-        auto c = std::make_shared<child_t>(this, name);
+        auto c = std::make_shared<child_t>(dynamic_cast<parent_t*>(this), name);
         impl_register_child(c);
         return c;
     }
