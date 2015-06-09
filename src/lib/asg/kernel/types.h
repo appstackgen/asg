@@ -8,6 +8,9 @@
 
 #include <string>
 #include <sstream>
+#include <vector>
+#include <cassert>
 
 namespace asg {
+    using size = std::size_t;
 }
