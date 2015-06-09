@@ -1,4 +1,4 @@
-set(LIBNAME ${ASG_MODELING_LIB_NAME})
+set(LIBNAME ${ASG_OBJECT_MODEL_LIB_NAME})
 
 set(LIBVERSION_MAJOR 1)
 set(LIBVERSION_MINOR 0)
@@ -9,22 +9,20 @@ set(LIBVERSION ${LIBVERSION_MAJOR}.${LIBVERSION_MINOR}.${LIBVERSION_PATCH})
 
 set(CMAKE_CXX_FLAGS "${PROJECT_COMPILER_FLAGS}")
 
-set(MODELING_HEADERS
-    project.h
-    project_fragment.h
+set(OBJECT_MODEL_HEADERS
+    model.h
 )
 
-set(MODELING_SOURCES
-    project.cpp
-    project_fragment.cpp
+set(OBJECT_MODEL_SOURCES
+    model.cpp
 )
 
 set(HEADERS
-    ${MODELING_HEADERS}
+    ${OBJECT_MODEL_HEADERS}
 )
 
 set(SOURCES
-    ${MODELING_SOURCES}
+    ${OBJECT_MODEL_SOURCES}
 )
 
 # this dummy target ensures headers without cpp file are shown in qtcreator (eg. template files)
@@ -38,4 +36,4 @@ set_target_properties(${LIBNAME}
     SOVERSION ${LIBSOVERSION}
 )
 
-target_link_libraries(${LIBNAME} ${ASG_KERNEL_LIB_NAME})
+target_link_libraries(${LIBNAME} ${ASG_MODELING_LIB_NAME})
