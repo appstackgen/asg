@@ -17,6 +17,7 @@ set(KERNEL_HEADERS
     node_id_factory.h
     abstract_node.h
     node.h
+    root_node.h
 )
 
 set(KERNEL_SOURCES
@@ -26,6 +27,7 @@ set(KERNEL_SOURCES
     node_id_factory.cpp
     abstract_node.cpp
     node.cpp
+    root_node.cpp
 )
 
 set(HEADERS
